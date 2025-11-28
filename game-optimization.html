@@ -127,7 +127,6 @@
                             <button class="btn btn-pricing" onclick="selectGameOptimization('single')">CHECK-OUT</button>
                         </div>
                     </div>
-                    </div>
                 </div>
                 
             </div>
@@ -146,19 +145,19 @@
     <script src="script.js"></script>
     <script src="product-script.js"></script>
 <script>
-    function selectGameOptimization(type) {
-        const optimizations = {
-            'single': { name: 'Single Game Optimization', price: '$19.99' },
-            'multi': { name: 'Multi-Game Optimization', price: '$34.99' },
-            'premium': { name: 'Premium Game Optimization', price: '$49.99' }
-        };
-        
-        const selected = optimizations[type];
-        sessionStorage.setItem('selectedGameOptimization', JSON.stringify(selected));
-        window.location.href = 'index.html#contact';
-    }
+function selectGameOptimization(type) {
+    const optimizations = {
+        'single': { 
+            name: 'Any Game Optimization', 
+            price: 'RS.100',  // Changed to actual price
+            features: ['FPS Boost', 'Network Boost', 'Mouse-delay Fix', 'Keyboard-delay Fix', 'Customer Support']
+        }
+    };
+    
+    const selected = optimizations[type];
+    sessionStorage.setItem('selectedGameOptimization', JSON.stringify(selected));
+    window.location.href = 'billing.html';
+}
 </script>
 </body>
-
 </html>
-
