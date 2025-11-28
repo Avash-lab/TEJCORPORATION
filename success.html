@@ -23,11 +23,17 @@
             border: 1px solid #333;
             max-width: 500px;
             width: 100%;
+            box-shadow: var(--shadow);
         }
         .success-icon {
             font-size: 4rem;
             color: #2ecc71;
             margin-bottom: 20px;
+            animation: bounce 1s infinite alternate;
+        }
+        @keyframes bounce {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-10px); }
         }
     </style>
 </head>
@@ -41,19 +47,63 @@
             <p style="color: var(--text-light); margin-bottom: 30px; line-height: 1.6;">
                 Thank you for your interest in TEJ CORPORATION services. 
                 I have received your request and will contact you within 1-2 hours 
-                in Whatsapp or Email please stay clamly.
+                via WhatsApp or Email. Please stay tuned.
             </p>
             <div style="margin: 30px 0; padding: 20px; background: #1a1a1a; border-radius: 10px; border: 1px solid #333;">
                 <h4 style="color: var(--primary); margin-bottom: 10px;">What's Next?</h4>
                 <p style="color: var(--text-light); font-size: 0.9rem;">
                     • I'll analyze your requirements<br>
-                    • Stay with us😁<br>
+                    • Contact you via WhatsApp/Email<br>
+                    • Provide payment details<br>
                 </p>
             </div>
-            <a href="index.html" class="btn" style="margin-top: 20px;">
-                <i class="fas fa-home"></i> Return to Home
-            </a>
+            <div class="support-buttons" style="margin-top: 20px;">
+                <!-- UPDATED WHATSAPP LINK WITH YOUR PERSONAL NUMBER -->
+                <a href="https://wa.me/9779804949857" class="btn" style="background: #25D366; margin: 5px;">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Now
+                </a>
+                <a href="index.html" class="btn btn-outline" style="margin: 5px;">
+                    <i class="fas fa-home"></i> Return to Home
+                </a>
+            </div>
         </div>
     </div>
+
+    <script>
+        // Add simple confetti effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12'];
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.cssText = `
+                    position: fixed;
+                    width: 10px;
+                    height: 10px;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    border-radius: 50%;
+                    top: -10px;
+                    left: ${Math.random() * 100}%;
+                    opacity: 0;
+                    z-index: 1000;
+                `;
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes confettiSuccess {
+                        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+                        100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                confetti.style.animation = `confettiSuccess ${Math.random() * 3 + 2}s linear forwards`;
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        });
+    </script>
 </body>
 </html>
