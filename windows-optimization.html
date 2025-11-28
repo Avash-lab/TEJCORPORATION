@@ -191,17 +191,23 @@ function selectOptimization(type) {
     const optimizations = {
         'basic': { 
             name: 'Basic Optimization', 
-            price: 'RS.200',  // Changed to actual price
+            price: 'RS.200',
             features: ['System Cleanup', 'Boot Optimization', 'Desktop Optimization', 'Basic Tweaks']
         },
         'advanced': { 
             name: 'Advanced Optimization', 
-            price: 'RS.400',  // Changed to actual price
+            price: 'RS.400',
             features: ['All Basic Features', 'PC Optimizer', 'Whole PC Clean-up', 'Network Optimization', 'GPU Tuning']
         }
     };
     
     const selected = optimizations[type];
+    
+    // CLEAR OLD DATA FIRST
+    sessionStorage.removeItem('selectedPanel');
+    sessionStorage.removeItem('selectedOptimization');
+    sessionStorage.removeItem('selectedGameOptimization');
+    
     sessionStorage.setItem('selectedOptimization', JSON.stringify(selected));
     window.location.href = 'billing.html';
 }
