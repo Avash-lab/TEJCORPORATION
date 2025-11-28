@@ -46,184 +46,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Auto-fill selected product from session storage
-function populateSelectedProduct() {
-    const selectedPanel = JSON.parse(sessionStorage.getItem('selectedPanel'));
-    const selectedOptimization = JSON.parse(sessionStorage.getItem('selectedOptimization'));
-    const selectedGameOptimization = JSON.parse(sessionStorage.getItem('selectedGameOptimization'));
-    
-    let productName = 'Custom Request';
-    let productCode = '';
-    
-    if (selectedPanel) {
-        productName = selectedPanel.name;
-        productCode = getProductCode(selectedPanel.name);
-    } else if (selectedOptimization) {
-        productName = selectedOptimization.name;
-        productCode = getProductCode(selectedOptimization.name);
-    } else if (selectedGameOptimization) {
-        productName = selectedGameOptimization.name;
-        productCode = getProductCode(selectedGameOptimization.name);
-    }
-    
-    const selectedProductField = document.getElementById('selected_product');
-    if (selectedProductField) {
-        selectedProductField.value = productName;
-    }
-    
-    // Auto-fill product code if available and field is empty
-    const productCodeField = document.getElementById('product_code');
-    if (productCode && productCodeField && !productCodeField.value) {
-        productCodeField.value = productCode;
-    }
-}
-
-// Helper function to get product codes
-function getProductCode(productName) {
-    const codeMap = {
-        'Basic Panel': '1111',
-        'Advance Panel': '1112',
-        'Brutal Panel': '1113',
-        'Single Game Optimization': '1113',
-        'Multi-Game Optimization': '1113',
-        'Premium Game Optimization': '1113',
-        'Basic Optimization': '1114',
-        'Advanced Optimization': '1115',
-        'Ultimate Optimization': '1115',
-        'Free Panel': '1111',
-        'Paid Panel': '1112',
-        'Any Game': '1113'
-    };
-    return codeMap[productName] || '';
-}
-
-// Web3Forms Contact Form Submission
-if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        
-        // Show loading state
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING...';
-        submitBtn.disabled = true;
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        
-        try {
-            const response = await fetch(contactForm.action, {
-                method: 'POST',
-                body: formData
-            });
-            
-            const data = await response.json();
-            
-            if (data.success) {
-                if (resultDiv) {
-                    resultDiv.innerHTML = `
-                        <div style="background: #2ecc70; color: white; padding: 15px; border-radius: 10px; text-align: center;">
-                            <i class="fas fa-check-circle"></i> 
-                            <strong>Thank you!</strong> Your request has been sent successfully. I will contact you within 1-2 hours.
-                        </div>
-                    `;
-                }
-                
-                contactForm.reset();
-                
-                // Clear session storage after successful submission
-                sessionStorage.removeItem('selectedPanel');
-                sessionStorage.removeItem('selectedOptimization');
-                sessionStorage.removeItem('selectedGameOptimization');
-                
-                // Redirect to success page after 3 seconds
-                setTimeout(() => {
-                    window.location.href = 'success.html';
-                }, 3000);
-                
-            } else {
-                throw new Error(data.message || 'Submission failed');
-            }
-            
-        } catch (error) {
-            console.error('Error:', error);
-            if (resultDiv) {
-                resultDiv.innerHTML = `
-                    <div style="background: #e74c3c; color: white; padding: 15px; border-radius: 10px; text-align: center;">
-                        <i class="fas fa-exclamation-circle"></i> 
-                        <strong>Error:</strong> Failed to send your message. Please contact me directly via WhatsApp or Email.
-                    </div>
-                `;
-            }
-        } finally {
-            // Reset button state
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-            
-            // Clear error message after 5 seconds
-            setTimeout(() => {
-                if (resultDiv) {
-                    resultDiv.innerHTML = '';
-                }
-            }, 5000);
-        }
-    });
-}
-
-// Scroll Animations
-const animateOnScroll = () => {
-    const elements = document.querySelectorAll('.service-card, .portfolio-item, .highlight-item, .feature-item, .pricing-card');
-    
-    elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < window.innerHeight - elementVisible) {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }
-    });
-};
-
-// Initialize animations when page loads
-window.addEventListener('DOMContentLoaded', () => {
-    // Set initial styles for animated elements
-    const elements = document.querySelectorAll('.service-card, .portfolio-item, .highlight-item, .feature-item, .pricing-card');
-    elements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    });
-
-    // Populate selected product if on contact page
-    populateSelectedProduct();
-    
-    // Initial animation check
-    setTimeout(animateOnScroll, 100);
-});
-
-// Scroll event listener for animations
-window.addEventListener('scroll', animateOnScroll);
-
-// Product Page Navigation
-function openProductPage(productType) {
-    switch(productType) {
-        case 'game-panel':
-            window.location.href = 'game-panel.html';
-            break;
-        case 'game-optimization':
-            window.location.href = 'game-optimization.html';
-            break;
-        case 'windows-optimization':
-            window.location.href = 'windows-optimization.html';
-            break;
-        default:
-            window.location.href = 'index.html#portfolio';
-    }
-}
-
-// Panel selection functionality (for game-panel.html)
+// Panel selection functionality - REDIRECT TO BILLING
 function selectPanel(panelType) {
     const panels = {
         'basic': {
@@ -259,38 +82,43 @@ function selectPanel(panelType) {
         // Store selection in sessionStorage
         sessionStorage.setItem('selectedPanel', JSON.stringify(selectedPanel));
         
-        // Show confirmation and redirect to contact
-        alert(`You selected: ${selectedPanel.name}\nPrice: ${selectedPanel.price}\n\nRedirecting to contact form...`);
-        window.location.href = 'index.html#contact';
+        // Redirect to BILLING PAGE instead of contact form
+        window.location.href = 'billing.html';
     }
 }
 
-// Optimization selection functionality
+// Optimization selection functionality - REDIRECT TO BILLING
 function selectOptimization(type) {
     const optimizations = {
         'basic': { 
             name: 'Basic Optimization', 
-            price: 'Contact for Price' 
+            price: 'Contact for Price',
+            features: ['System Cleanup', 'Boot Optimization', 'Basic Tweaks']
         },
         'advanced': { 
             name: 'Advanced Optimization', 
-            price: 'Contact for Price' 
+            price: 'Contact for Price',
+            features: ['All Basic Features', 'PC Optimizer', 'Network Optimization', 'GPU Tuning']
         },
         'ultimate': { 
             name: 'Ultimate Optimization', 
-            price: 'Contact for Price' 
+            price: 'Contact for Price',
+            features: ['All Advanced Features', 'Maximum Performance', 'Custom Configuration']
         },
         'single': { 
             name: 'Single Game Optimization', 
-            price: 'Contact for Price' 
+            price: 'Contact for Price',
+            features: ['FPS Boost', 'Network Optimization', 'Performance Tuning']
         },
         'multi': { 
             name: 'Multi-Game Optimization', 
-            price: 'Contact for Price' 
+            price: 'Contact for Price',
+            features: ['Multiple Games Support', 'Custom Profiles', 'Advanced Optimization']
         },
         'premium': { 
             name: 'Premium Game Optimization', 
-            price: 'Contact for Price' 
+            price: 'Contact for Price',
+            features: ['Maximum Performance', 'Priority Support', 'Custom Configuration']
         }
     };
     
@@ -303,8 +131,346 @@ function selectOptimization(type) {
             sessionStorage.setItem('selectedOptimization', JSON.stringify(selected));
         }
         
-        alert(`You selected: ${selected.name}\nPrice: ${selected.price}\n\nRedirecting to contact form...`);
-        window.location.href = 'index.html#contact';
+        // Redirect to BILLING PAGE instead of contact form
+        window.location.href = 'billing.html';
+    }
+}
+
+// Web3Forms Contact Form Submission (for contact page)
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        // Show loading state
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING...';
+        submitBtn.disabled = true;
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                // Show success popup instead of redirecting
+                showEmailSuccessPopup();
+                
+                // Clear the form
+                contactForm.reset();
+                
+            } else {
+                throw new Error(data.message || 'Submission failed');
+            }
+            
+        } catch (error) {
+            console.error('Error:', error);
+            if (resultDiv) {
+                resultDiv.innerHTML = `
+                    <div style="background: #e74c3c; color: white; padding: 15px; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-exclamation-circle"></i> 
+                        <strong>Error:</strong> Failed to send your message. Please contact me directly via WhatsApp or Email.
+                    </div>
+                `;
+            }
+        } finally {
+            // Reset button state
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            
+            // Clear error message after 5 seconds
+            setTimeout(() => {
+                if (resultDiv) {
+                    resultDiv.innerHTML = '';
+                }
+            }, 5000);
+        }
+    });
+}
+
+// Show Email Success Popup with Cool Animation
+function showEmailSuccessPopup() {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'successPopupOverlay';
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        backdrop-filter: blur(10px);
+    `;
+    
+    // Success popup content
+    overlay.innerHTML = `
+        <div style="
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid #333;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        ">
+            <!-- Animated Checkmark -->
+            <div class="success-animation" style="
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 25px;
+                position: relative;
+            ">
+                <svg class="checkmark" viewBox="0 0 52 52" style="
+                    width: 80px;
+                    height: 80px;
+                ">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" style="
+                        stroke: #2ecc71;
+                        stroke-width: 2;
+                    "/>
+                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" style="
+                        stroke: #2ecc71;
+                        stroke-width: 3;
+                        stroke-linecap: round;
+                    "/>
+                </svg>
+            </div>
+            
+            <h2 style="color: #2ecc71; margin-bottom: 15px; font-size: 1.8rem; font-weight: 700;">
+                Email Sent!
+            </h2>
+            
+            <p style="color: var(--text-light); margin-bottom: 30px; line-height: 1.6; font-size: 1.1rem;">
+                Your message has been sent successfully!<br>
+                I'll contact you within 1-2 hours.
+            </p>
+            
+            <button id="closeSuccessPopup" class="btn" style="
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                color: white;
+                border: none;
+                padding: 12px 30px;
+                border-radius: 25px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            ">
+                <i class="fas fa-check"></i> CLOSE!
+            </button>
+        </div>
+        
+        <style>
+            @keyframes popIn {
+                0% {
+                    opacity: 0;
+                    transform: scale(0.5) translateY(-50px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: scale(1) translateY(0);
+                }
+            }
+            
+            @keyframes popOut {
+                0% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0.5) translateY(50px);
+                }
+            }
+            
+            .checkmark__circle {
+                stroke-dasharray: 166;
+                stroke-dashoffset: 166;
+                stroke-width: 2;
+                stroke-miterlimit: 10;
+                fill: none;
+                animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+            }
+            
+            .checkmark__check {
+                transform-origin: 50% 50%;
+                stroke-dasharray: 48;
+                stroke-dashoffset: 48;
+                animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+            }
+            
+            @keyframes stroke {
+                100% {
+                    stroke-dashoffset: 0;
+                }
+            }
+            
+            .success-animation {
+                animation: scale 0.3s ease-in-out 0.9s both;
+            }
+            
+            @keyframes scale {
+                0%, 100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.1);
+                }
+            }
+        </style>
+    `;
+    
+    document.body.appendChild(overlay);
+    
+    // Add event listener to the close button
+    const closeButton = document.getElementById('closeSuccessPopup');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeSuccessPopup);
+    }
+    
+    // Also close when clicking outside the popup
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+            closeSuccessPopup();
+        }
+    });
+    
+    // Add confetti effect
+    createConfetti();
+}
+
+// Close success popup - FIXED FUNCTION
+function closeSuccessPopup() {
+    const overlay = document.getElementById('successPopupOverlay');
+    if (overlay) {
+        // Add pop-out animation
+        const popupContent = overlay.querySelector('div');
+        if (popupContent) {
+            popupContent.style.animation = 'popOut 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
+        }
+        
+        // Fade out the overlay
+        overlay.style.opacity = '0';
+        overlay.style.transition = 'opacity 0.4s ease';
+        
+        // Remove from DOM after animation
+        setTimeout(() => {
+            if (overlay && overlay.parentNode) {
+                overlay.parentNode.removeChild(overlay);
+            }
+        }, 400);
+    }
+}
+
+// Confetti effect
+function createConfetti() {
+    const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c'];
+    
+    for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.cssText = `
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            border-radius: 50%;
+            top: -20px;
+            left: ${Math.random() * 100}%;
+            opacity: 0;
+            z-index: 10001;
+            pointer-events: none;
+        `;
+        
+        const animation = `
+            @keyframes confettiFall${i} {
+                0% {
+                    transform: translateY(0) rotate(0deg) scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(100vh) rotate(${Math.random() * 360}deg) scale(0);
+                    opacity: 0;
+                }
+            }
+        `;
+        
+        const style = document.createElement('style');
+        style.textContent = animation;
+        document.head.appendChild(style);
+        
+        confetti.style.animation = `confettiFall${i} ${Math.random() * 2 + 1.5}s ease-in forwards`;
+        confetti.style.animationDelay = Math.random() * 0.5 + 's';
+        
+        document.body.appendChild(confetti);
+        
+        setTimeout(() => {
+            if (confetti && confetti.parentNode) {
+                confetti.parentNode.removeChild(confetti);
+            }
+        }, 5000);
+    }
+}
+
+// Scroll Animations
+const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.service-card, .portfolio-item, .highlight-item, .feature-item, .pricing-card');
+    
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }
+    });
+};
+
+// Initialize animations when page loads
+window.addEventListener('DOMContentLoaded', () => {
+    // Set initial styles for animated elements
+    const elements = document.querySelectorAll('.service-card, .portfolio-item, .highlight-item, .feature-item, .pricing-card');
+    elements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+
+    // Initial animation check
+    setTimeout(animateOnScroll, 100);
+});
+
+// Scroll event listener for animations
+window.addEventListener('scroll', animateOnScroll);
+
+// Product Page Navigation
+function openProductPage(productType) {
+    switch(productType) {
+        case 'game-panel':
+            window.location.href = 'game-panel.html';
+            break;
+        case 'game-optimization':
+            window.location.href = 'game-optimization.html';
+            break;
+        case 'windows-optimization':
+            window.location.href = 'windows-optimization.html';
+            break;
+        default:
+            window.location.href = 'index.html#portfolio';
     }
 }
 
@@ -322,11 +488,8 @@ function addToCart(productName, price, productCode) {
     cart.push(cartItem);
     sessionStorage.setItem('cart', JSON.stringify(cart));
     
-    // Show confirmation
-    alert(`${productName} has been added to your cart!\nProduct Code: ${productCode}\n\nRedirecting to contact form...`);
-    
-    // Redirect to contact page for purchase
-    window.location.href = 'index.html#contact';
+    // Redirect to billing page
+    window.location.href = 'billing.html';
 }
 
 // Utility function to clear all session storage
@@ -411,13 +574,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Export functions for global access (if needed)
+// Export functions for global access
 window.TEJ_CORPORATION = {
     selectPanel,
     selectOptimization,
     openProductPage,
     addToCart,
-    clearSessionStorage
+    clearSessionStorage,
+    showEmailSuccessPopup,
+    closeSuccessPopup
 };
 
 console.log('TEJ CORPORATION JavaScript loaded successfully!');
