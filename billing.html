@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing - TEJ CORPORATION</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product-styles.css">
+    <style>
+        .billing-hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .billing-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .billing-content {
+            background: #2d2d2d;
+            border-radius: 15px;
+            padding: 40px;
+            border: 1px solid #333;
+            box-shadow: var(--shadow);
+        }
+        
+        .order-summary {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid #333;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        
+        .summary-total {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .security-notice {
+            background: rgba(52, 152, 219, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .billing-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">TEJ<span style="color: red;">CORPO</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#portfolio">Works</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Billing Hero -->
+    <section class="billing-hero">
+        <div class="container">
+            <a href="javascript:history.back()" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Products
+            </a>
+            <h1>Complete Your Purchase</h1>
+            <p class="product-description">Fill out the form below to request your product</p>
+        </div>
+    </section>
+
+    <!-- Billing Section -->
+    <section class="billing-container">
+        <div class="container">
+            <div class="billing-content">
+                <!-- Order Summary Section -->
+                <div id="orderSection">
+                    <h2 style="text-align: center; margin-bottom: 30px; color: var(--text);">Order Summary</h2>
+                    
+                    <div class="order-summary">
+                        <div id="orderDetails">
+                            <!-- Order details will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="security-notice">
+                        <i class="fas fa-shield-alt" style="color: var(--primary); font-size: 1.5rem; margin-bottom: 10px; display: block;"></i>
+                        <h4 style="color: var(--primary); margin-bottom: 10px;">Secure Order</h4>
+                        <p style="color: var(--text-light); margin: 0;">Your information is protected and will be sent directly to TEJ CORPORATION</p>
+                    </div>
+
+                    <div class="billing-form">
+                        <h3 style="margin-bottom: 20px; color: var(--text);">Customer Information</h3>
+                        
+                        <form id="billingForm" action="https://api.web3forms.com/submit" method="POST">
+                            <!-- Web3Forms Required Fields -->
+                            <input type="hidden" name="access_key" value="375d1997-28a9-43e3-9039-49520d4d5003">
+                            <input type="hidden" name="subject" value="Purchase Request - TEJ CORPORATION">
+                            <input type="hidden" name="from_name" value="TEJ CORPORATION Website">
+                            <input type="hidden" name="product_name" id="product_name">
+                            <input type="hidden" name="product_code" id="product_code">
+                            <input type="hidden" name="product_price" id="product_price">
+                            <input type="checkbox" name="botcheck" style="display: none;">
+                            
+                            <div class="form-group">
+                                <label for="fullname">Full Name *</label>
+                                <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Enter your full name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">WhatsApp Number *</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="+977 98XXXXXXXX" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Additional Requirements (Optional)</label>
+                                <textarea id="message" name="message" class="form-control" placeholder="Any specific requirements or questions..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn" style="width: 100%; padding: 15px; font-size: 1.1rem; margin-top: 20px;">
+                                <i class="fas fa-paper-plane"></i> SEND ORDER REQUEST
+                            </button>
+                        </form>
+                        
+                        <div id="result" style="margin-top: 15px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        // Load order details from session storage
+        function loadOrderDetails() {
+            const selectedPanel = JSON.parse(sessionStorage.getItem('selectedPanel'));
+            const selectedOptimization = JSON.parse(sessionStorage.getItem('selectedOptimization'));
+            const selectedGameOptimization = JSON.parse(sessionStorage.getItem('selectedGameOptimization'));
+            
+            let productName = 'Custom Product';
+            let productPrice = 'Contact for Price';
+            let productCode = '';
+            let features = [];
+            
+            if (selectedPanel) {
+                productName = selectedPanel.name;
+                productPrice = selectedPanel.price;
+                productCode = getProductCode(selectedPanel.name);
+                features = selectedPanel.features || [];
+            } else if (selectedOptimization) {
+                productName = selectedOptimization.name;
+                productPrice = selectedOptimization.price;
+                productCode = getProductCode(selectedOptimization.name);
+                features = selectedOptimization.features || [];
+            } else if (selectedGameOptimization) {
+                productName = selectedGameOptimization.name;
+                productPrice = selectedGameOptimization.price;
+                productCode = getProductCode(selectedGameOptimization.name);
+                features = selectedGameOptimization.features || [];
+            }
+            
+            // Set hidden form fields
+            document.getElementById('product_name').value = productName;
+            document.getElementById('product_code').value = productCode;
+            document.getElementById('product_price').value = productPrice;
+            
+            const orderDetails = document.getElementById('orderDetails');
+            let featuresHTML = '';
+            
+            if (features.length > 0) {
+                featuresHTML = `
+                    <div style="margin-top: 10px;">
+                        <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 5px;">Includes:</p>
+                        <ul style="color: var(--text-light); font-size: 0.85rem; padding-left: 20px;">
+                            ${features.map(feature => `<li>${feature}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            orderDetails.innerHTML = `
+                <div class="summary-item">
+                    <div>
+                        <h4 style="color: var(--text); margin: 0 0 5px 0;">${productName}</h4>
+                        <p style="color: var(--text-light); font-size: 0.9rem; margin: 0;">Product Code: ${productCode}</p>
+                        ${featuresHTML}
+                    </div>
+                    <div class="summary-total">${productPrice}</div>
+                </div>
+                <div class="summary-item">
+                    <div style="color: var(--text-light);">Technical Support</div>
+                    <div style="color: #2ecc71; font-weight: 600;">Free</div>
+                </div>
+                <div class="summary-item summary-total">
+                    <div>Total Amount</div>
+                    <div>${productPrice}</div>
+                </div>
+            `;
+        }
+
+        function getProductCode(productName) {
+            const codeMap = {
+                'Free Panel': '1111',
+                'Paid Panel': '1112',
+                'Basic Panel': '1111',
+                'Advance Panel': '1112',
+                'Brutal Panel': '1113',
+                'Any Game Optimization': '1113',
+                'Single Game Optimization': '1113',
+                'Multi-Game Optimization': '1113',
+                'Premium Game Optimization': '1113',
+                'Basic Optimization': '1114',
+                'Advanced Optimization': '1115',
+                'Ultimate Optimization': '1115'
+            };
+            return codeMap[productName] || 'CUSTOM';
+        }
+
+        // Web3Forms Contact Form Submission
+        document.addEventListener('DOMContentLoaded', function() {
+            loadOrderDetails();
+            
+            // Check if there's a product selected
+            const selectedPanel = JSON.parse(sessionStorage.getItem('selectedPanel'));
+            const selectedOptimization = JSON.parse(sessionStorage.getItem('selectedOptimization'));
+            const selectedGameOptimization = JSON.parse(sessionStorage.getItem('selectedGameOptimization'));
+            
+            if (!selectedPanel && !selectedOptimization && !selectedGameOptimization) {
+                window.location.href = 'index.html';
+            }
+            
+            const billingForm = document.getElementById('billingForm');
+            const resultDiv = document.getElementById('result');
+            
+            if (billingForm) {
+                billingForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    const submitBtn = billingForm.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    // Show loading state
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING ORDER...';
+                    submitBtn.disabled = true;
+                    
+                    // Get form data
+                    const formData = new FormData(billingForm);
+                    
+                    try {
+                        const response = await fetch(billingForm.action, {
+                            method: 'POST',
+                            body: formData
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            if (resultDiv) {
+                                resultDiv.innerHTML = `
+                                    <div style="background: #2ecc70; color: white; padding: 15px; border-radius: 10px; text-align: center;">
+                                        <i class="fas fa-check-circle"></i> 
+                                        <strong>Thank you!</strong> Your order request has been sent successfully. I will contact you within 1-2 hours.
+                                    </div>
+                                `;
+                            }
+                            
+                            billingForm.reset();
+                            
+                            // Redirect to success page after 3 seconds
+                            setTimeout(() => {
+                                window.location.href = 'success.html';
+                            }, 3000);
+                            
+                        } else {
+                            throw new Error(data.message || 'Submission failed');
+                        }
+                        
+                    } catch (error) {
+                        console.error('Error:', error);
+                        if (resultDiv) {
+                            resultDiv.innerHTML = `
+                                <div style="background: #e74c3c; color: white; padding: 15px; border-radius: 10px; text-align: center;">
+                                    <i class="fas fa-exclamation-circle"></i> 
+                                    <strong>Error:</strong> Failed to send your order. Please contact me directly via WhatsApp or Email.
+                                </div>
+                            `;
+                        }
+                    } finally {
+                        // Reset button state
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        
+                        // Clear error message after 5 seconds
+                        setTimeout(() => {
+                            if (resultDiv) {
+                                resultDiv.innerHTML = '';
+                            }
+                        }, 5000);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
