@@ -153,7 +153,7 @@
                         <div class="pricing-badge">RECOMMENDED</div>
                         <div class="pricing-header">
                             <h3>Advanced Optimization</h3>
-                            <div class="price">RS.350</div>
+                            <div class="price">RS.400</div>
                         </div>
                         <div class="pricing-features">
                             <ul>
@@ -168,7 +168,6 @@
                         <div class="pricing-actions">
                             <button class="btn btn-pricing featured-btn" onclick="selectOptimization('advanced')">CHECK-OUT</button>
                         </div>
-                    </div>
                     </div>
                 </div>
                 
@@ -188,18 +187,24 @@
     <script src="script.js"></script>
     <script src="product-script.js"></script>
 <script>
-    function selectOptimization(type) {
-        const optimizations = {
-            'basic': { name: 'Basic Optimization', price: '$24.99' },
-            'advanced': { name: 'Advanced Optimization', price: '$39.99' },
-            'ultimate': { name: 'Ultimate Optimization', price: '$59.99' }
-        };
-        
-        const selected = optimizations[type];
-        sessionStorage.setItem('selectedOptimization', JSON.stringify(selected));
-        window.location.href = 'index.html#contact';
-    }
+function selectOptimization(type) {
+    const optimizations = {
+        'basic': { 
+            name: 'Basic Optimization', 
+            price: 'RS.200',  // Changed to actual price
+            features: ['System Cleanup', 'Boot Optimization', 'Desktop Optimization', 'Basic Tweaks']
+        },
+        'advanced': { 
+            name: 'Advanced Optimization', 
+            price: 'RS.400',  // Changed to actual price
+            features: ['All Basic Features', 'PC Optimizer', 'Whole PC Clean-up', 'Network Optimization', 'GPU Tuning']
+        }
+    };
+    
+    const selected = optimizations[type];
+    sessionStorage.setItem('selectedOptimization', JSON.stringify(selected));
+    window.location.href = 'billing.html';
+}
 </script>
 </body>
-
 </html>
