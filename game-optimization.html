@@ -149,12 +149,18 @@ function selectGameOptimization(type) {
     const optimizations = {
         'single': { 
             name: 'Any Game Optimization', 
-            price: 'RS.100',  // Changed to actual price
+            price: 'RS.100',
             features: ['FPS Boost', 'Network Boost', 'Mouse-delay Fix', 'Keyboard-delay Fix', 'Customer Support']
         }
     };
     
     const selected = optimizations[type];
+    
+    // CLEAR OLD DATA FIRST
+    sessionStorage.removeItem('selectedPanel');
+    sessionStorage.removeItem('selectedOptimization');
+    sessionStorage.removeItem('selectedGameOptimization');
+    
     sessionStorage.setItem('selectedGameOptimization', JSON.stringify(selected));
     window.location.href = 'billing.html';
 }
