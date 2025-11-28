@@ -178,17 +178,23 @@ function selectPanel(panelType) {
     const panels = {
         'free': {
             name: 'Free Panel',
-            price: 'FREE',  // Keep as FREE
+            price: 'FREE',
             features: ['Anti-Ban Protection', 'Location Features', '24/7 Support']
         },
         'paid': {
             name: 'Paid Panel',
-            price: 'RS.500',  // Changed from 'Contact for Price' to actual price
+            price: 'RS.500',
             features: ['Anti-Ban Protection', 'Location Features', 'Female-fix', '24/7 Support', 'Premium Features']
         }
     };
     
     const selectedPanel = panels[panelType];
+    
+    // CLEAR OLD DATA FIRST
+    sessionStorage.removeItem('selectedPanel');
+    sessionStorage.removeItem('selectedOptimization');
+    sessionStorage.removeItem('selectedGameOptimization');
+    
     sessionStorage.setItem('selectedPanel', JSON.stringify(selectedPanel));
     window.location.href = 'billing.html';
 }
