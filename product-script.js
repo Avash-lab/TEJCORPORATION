@@ -39,68 +39,35 @@ window.addEventListener('DOMContentLoaded', () => {
     animateFeatures();
 });
 
-// Add to cart functionality (placeholder)
-function addToCart(productName, price) {
-    const cartItem = {
-        name: productName,
-        price: price,
-        quantity: 1,
-        timestamp: new Date().toISOString()
-    };
-    
-    // Store in sessionStorage
-    let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
-    cart.push(cartItem);
-    sessionStorage.setItem('cart', JSON.stringify(cart));
-    
-    // Show confirmation
-    alert(`${productName} has been added to your cart!`);
-    
-    // Redirect to contact page for purchase
-    window.location.href = 'index.html#contact';
-}
-
-// Price toggle functionality (if you have different tiers)
-function togglePrice(plan) {
-    const prices = {
-        basic: '$29.99',
-        pro: '$49.99',
-        ultimate: '$79.99'
-    };
-    
-    const priceElement = document.querySelector('.product-price');
-    if (priceElement && prices[plan]) {
-        priceElement.textContent = prices[plan];
-    }
-}
-// Panel selection functionality
+// Panel selection functionality - REDIRECT TO BILLING
 function selectPanel(panelType) {
     const panels = {
         'basic': {
             name: 'Basic Panel',
-            price: '$19.99',
+            price: 'Contact for Price',
             features: ['Essential Features', 'Basic Anti-Ban', 'Standard Updates', 'Email Support']
         },
         'advance': {
             name: 'Advance Panel',
-            price: '$39.99',
+            price: 'Contact for Price',
             features: ['All Basic Features', 'Advanced Anti-Ban', 'Priority Updates', '24/7 Support', 'Custom Features']
         },
         'brutal': {
             name: 'Brutal Panel',
-            price: '$59.99',
+            price: 'Contact for Price',
             features: ['All Advance Features', 'Maximum Anti-Ban', 'Instant Updates', 'Premium Support', 'Brutal Mode', 'Custom Requests']
         }
     };
     
     const selectedPanel = panels[panelType];
     
-    // Store selection in sessionStorage
-    sessionStorage.setItem('selectedPanel', JSON.stringify(selectedPanel));
-    
-    // Show confirmation and redirect to contact
-    alert(`You selected: ${selectedPanel.name}\nPrice: ${selectedPanel.price}\n\nRedirecting to contact form...`);
-    window.location.href = 'index.html#contact';
+    if (selectedPanel) {
+        // Store selection in sessionStorage
+        sessionStorage.setItem('selectedPanel', JSON.stringify(selectedPanel));
+        
+        // Redirect to BILLING PAGE
+        window.location.href = 'billing.html';
+    }
 }
 
 // Add animation to pricing cards
