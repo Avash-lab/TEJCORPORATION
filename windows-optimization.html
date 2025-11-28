@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Optimization - TEJ CORPORATION</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product-styles.css">
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">TEJ<span style="color: red;">CORPO</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#portfolio">Works</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Hero -->
+    <section class="product-hero">
+        <div class="container">
+            <a href="index.html#portfolio" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Products
+            </a>
+            <h1>Windows Optimization</h1>
+            <p class="product-description">Maximize your PC performance with deep Windows optimization and system tuning.</p>
+            <p class="product-description">Please note down the code of the product if you want to purchase.<br>it is need to send the product request.</p>
+            <a href="#purchase" class="btn">Get Optimized</a>
+        </div>
+    </section>
+
+    <!-- Product Details -->
+    <section class="product-content">
+        <div class="container">
+            <!-- Features Grid -->
+            <div class="product-features">
+                <h2 class="section-title">What's Included</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h4>Performance Boost</h4>
+                        <p>Significant improvement in system speed and responsiveness.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-memory"></i>
+                        </div>
+                        <h4>RAM Optimization</h4>
+                        <p>Optimize memory usage for better multitasking performance.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-hdd"></i>
+                        </div>
+                        <h4>Storage Cleanup</h4>
+                        <p>Remove unnecessary files and optimize storage space.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Security Tweaks</h4>
+                        <p>Enhance system security while maintaining performance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supported Systems -->
+            <div class="supported-games">
+                <h2 class="section-title">Supported Windows Versions</h2>
+                <div class="games-grid">
+                    <div class="game-item">
+                        <i class="fab fa-windows"></i>
+                        <h4>Windows 10</h4>
+                    </div>
+                    <div class="game-item">
+                        <i class="fab fa-windows"></i>
+                        <h4>Windows 11</h4>
+                    </div>
+                    <div class="game-item">
+                        <i class="fas fa-desktop"></i>
+                        <h4>All Editions</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="additional-info">
+                <h2 class="section-title">Why Choose Our Optimization?</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h4><i class="fas fa-check-circle"></i> Safe & Reliable</h4>
+                        <p>All optimizations are tested and safe for your system.</p>
+                    </div>
+                    <div class="info-item">
+                        <h4><i class="fas fa-clock"></i> Quick Setup</h4>
+                        <p>Get optimized in less than 30 minutes with remote support.</p>
+                    </div>
+                    <div class="info-item">
+                        <h4><i class="fas fa-undo"></i> Reversible</h4>
+                        <p>All changes can be reverted if needed.</p>
+                    </div>
+                    <div class="info-item">
+                        <h4><i class="fas fa-gamepad"></i> Gaming Focused</h4>
+                        <p>Specifically tuned for gaming performance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Purchase Section -->
+            <div class="purchase-section" id="purchase">
+                <h2>Ready to Boost Your PC?</h2>
+                <p class="purchase-description">Choose the optimization package.</p>
+                
+                <div class="pricing-grid">
+                    <!-- Basic Optimization -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Basic Optimization</h3>
+                            <div class="price">RS.</div>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i>System Cleanup</li>
+                                <li><i class="fas fa-check"></i>Boot Optimization</li>
+                                <li><i class="fas fa-check"></i>Desktop Optimization</li>
+                                <li><i class="fas fa-check"></i>Basic Tweaks</li>
+                                <li>ITEM CODE ( 1114 )</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-actions">
+                            <button class="btn btn-pricing" onclick="selectOptimization('basic')">CHECK-OUT</button>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Optimization -->
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">RECOMMENDED</div>
+                        <div class="pricing-header">
+                            <h3>Advanced Optimization</h3>
+                            <div class="price">RS.</div>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> All Basic Features</li>
+                                <li><i class="fas fa-check"></i> PC Optimizer</li>
+                                <li><i class="fas fa-check"></i> Whole PC Clean-up</li>
+                                <li><i class="fas fa-check"></i> Network Optimization</li>
+                                <li><i class="fas fa-check"></i> GPU Tuning</li>
+                                <li>ITEM CODE ( 1115 )</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-actions">
+                            <button class="btn btn-pricing featured-btn" onclick="selectOptimization('advanced')">CHECK-OUT</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!--Footer-->
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2025 TEJ CORPORATION.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="product-script.js"></script>
+<script>
+    function selectOptimization(type) {
+        const optimizations = {
+            'basic': { name: 'Basic Optimization', price: '$24.99' },
+            'advanced': { name: 'Advanced Optimization', price: '$39.99' },
+            'ultimate': { name: 'Ultimate Optimization', price: '$59.99' }
+        };
+        
+        const selected = optimizations[type];
+        sessionStorage.setItem('selectedOptimization', JSON.stringify(selected));
+        window.location.href = 'index.html#contact';
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Panel - TEJ CORPORATION</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product-styles.css">
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">TEJ<span style="color: red;">CORPO</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#portfolio">Works</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Hero -->
+    <section class="product-hero">
+        <div class="container">
+            <a href="index.html#portfolio" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Products
+            </a>
+            <h1>Premium Game Panel</h1>
+            <p class="product-description">Purchase the latest game panels for the maximum gaming experience.</p>
+            <p class="product-description">Please note down the code of the product if you want to purchase.<br>it is need to send the product request.</p>
+            <a href="#purchase" class="btn">Purchase Now</a>
+        </div>
+    </section>
+
+    <!-- Product Details -->
+    <section class="product-content">
+        <div class="container">
+            <!-- Features Grid -->
+            <div class="product-features">
+                <h2 class="section-title">What's Included</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Anti-Ban Protection</h4>
+                        <p>Our panel features you with the maximum security for your accounts.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h4>Regular Updates</h4>
+                        <p>Always up-to-date with the latest game patches and security updates.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>24/7 Support</h4>
+                        <p>Get the 24/7 customer service for any kind of issues.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4>Easy Setup</h4>
+                        <p>Simple to use and setup for the game.</p>
+                    </div>
+                </div>
+            </div>
+
+<!-- Supported Games -->
+<div class="supported-games">
+    <h2 class="section-title">Supported Games</h2>
+    <div class="games-grid">
+        <div class="game-item free-fire">
+            <i class="fas fa-fire"></i>
+            <h4>FREE FIRE</h4>
+        </div>
+
+    </div>
+</div>
+
+            <!-- Additional Info -->
+            <div class="additional-info">
+                <h2 class="section-title">Why Choose Our Panel?</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h4><i class="fas fa-check-circle"></i> 100% Safe</h4>
+                        <p>Our panels are thoroughly tested and updated regularly to ensure maximum safety.</p>
+                    </div> 
+                    <div class="info-item">
+                        <h4><i class="fas fa-users"></i> Community</h4>
+                        <p>Join our Discord community for support, updates, and tips.</p>
+                    </div>
+                    <div class="info-item">
+                        <h4><i class="fas fa-medal"></i> Premium Quality</h4>
+                        <p>High-quality code and features that makes us different.</p>
+                    </div>
+                </div>
+            </div>
+
+<!-- Purchase Section -->
+<div class="purchase-section" id="purchase">
+    <h2>Choose Your Gaming Panel</h2>
+    <p class="purchase-description">Select the perfect panel that matches your gaming needs</p>
+    
+    <div class="pricing-grid">
+        <!-- Basic Panel -->
+        <div class="pricing-card">
+            <div class="pricing-badge">new</div>
+            <div class="pricing-header">
+                <h3>Free Panel</h3>
+                <div class="price">RS.</div>
+            </div>
+            <div class="pricing-features">
+                <ul>
+                    <li><i class="fas fa-check"></i>Anti-Ban</li>
+                    <li><i class="fas fa-check"></i>Location</li>
+                    <li><i class="fas fa-check"></i>24/7 Support</li>
+                    <li>ITEM CODE ( 1111 )</li>
+                </ul>
+            </div>
+            <div class="pricing-actions">
+                <button class="btn btn-pricing" onclick="selectPanel('basic')">CHECK-OUT</button>
+            </div>
+        </div>
+
+        <!-- Advance Panel -->
+        <div class="pricing-card featured">
+            <div class="pricing-badge">new</div>
+            <div class="pricing-header">
+                <h3>Paid Panel</h3>
+                <div class="price">RS.</div>
+            </div>
+            <div class="pricing-features">
+                <ul>
+                    <li><i class="fas fa-check"></i>Anti-Ban</li>
+                    <li><i class="fas fa-check"></i>Location</li>
+                    <li><i class="fas fa-check"></i>Female-fix</li>
+                    <li><i class="fas fa-check"></i>24/7 Support</li>
+                    <li>ITEM CODE ( 1112 )</li>
+                </ul>
+            </div>
+            <div class="pricing-actions">
+                <button class="btn btn-pricing featured-btn" onclick="selectPanel('advance')">CHECK-OUT</button>
+            </div>
+        </div>
+
+    <script src="script.js"></script>
+    <script src="product-script.js"></script>
+    <script>
+        function selectPanel(panelType) {
+            const panels = {
+                'basic': {
+                    name: 'Basic Panel',
+                    price: '$19.99',
+                    features: ['Essential Features', 'Basic Anti-Ban', 'Standard Updates', 'Email Support']
+                },
+                'advance': {
+                    name: 'Advance Panel',
+                    price: '$39.99',
+                    features: ['All Basic Features', 'Advanced Anti-Ban', 'Priority Updates', '24/7 Support', 'Custom Features']
+                },
+                'brutal': {
+                    name: 'Brutal Panel',
+                    price: '$59.99',
+                    features: ['All Advance Features', 'Maximum Anti-Ban', 'Instant Updates', 'Premium Support', 'Brutal Mode', 'Custom Requests']
+                }
+            };
+            
+            const selectedPanel = panels[panelType];
+            sessionStorage.setItem('selectedPanel', JSON.stringify(selectedPanel));
+            window.location.href = 'index.html#contact';
+        }
+    </script>
+</body>
+</html>
+</body>
+</html>

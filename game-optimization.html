@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Optimization - TEJ CORPORATION</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product-styles.css">
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">TEJ<span style="color: red;">CORPO</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#portfolio">Works</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Hero -->
+    <section class="product-hero">
+        <div class="container">
+            <a href="index.html#portfolio" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Products
+            </a>
+            <h1>Game Optimization</h1>
+            <p class="product-description">Maximize FPS and reduce latency with game-specific optimization services.</p>
+            <p class="product-description">Please note down the code of the product if you want to purchase.<br>it is need to send the product request.</p>
+            <a href="#purchase" class="btn">Boost FPS</a>
+        </div>
+    </section>
+
+    <!-- Product Details -->
+    <section class="product-content">
+        <div class="container">
+            <!-- Features Grid -->
+            <div class="product-features">
+                <h2 class="section-title">What's Included</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4>FPS Boost</h4>
+                        <p>Significant increase in frames per second for smoother gameplay.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>Reduced Latency</h4>
+                        <p>Minimize input lag and network latency for competitive advantage.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h4>Graphics Optimization</h4>
+                        <p>Optimal settings for your hardware without sacrificing visual quality.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h4>Network Optimization</h4>
+                        <p>Reduce packet loss and improve connection stability.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Additional Info -->
+            <div class="additional-info">
+                <h2 class="section-title">Why Choose Our Game Optimization?</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h4><i class="fas fa-check-circle"></i> Game-Specific</h4>
+                        <p>Custom optimization for each game.</p>
+                    </div>
+                    <div class="info-item">
+                        <h4><i class="fas fa-clock"></i> Quick Results</h4>
+                        <p>Noticeable performance improvement immediately after optimization.</p>
+                    </div>
+                    <div class="info-item">
+                        <h4><i class="fas fa-undo"></i> Reversible</h4>
+                        <p>All changes can be reverted to original settings.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Purchase Section -->
+            <div class="purchase-section" id="purchase">
+                <h2>Ready for more fps?</h2>
+                <p class="purchase-description">Choose the optimization package.</p>
+                
+                <div class="pricing-grid">
+                    <!-- Single Game Optimization -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Any Game</h3>
+                            <div class="price">RS.</div>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> FPS Boost</li>
+                                <li><i class="fas fa-check"></i> Network Boost</li>
+                                <li><i class="fas fa-check"></i> Mouse-delay Fix</li>
+                                <li><i class="fas fa-check"></i> Keyboard-delay Fix</li>
+                                <li><i class="fas fa-check"></i> Customer Support</li>
+                                <li>ITEM CODE ( 1113 )</li>
+                            </ul>
+                        </div>
+
+                        <div class="pricing-actions">
+                            <button class="btn btn-pricing" onclick="selectGameOptimization('single')">CHECK-OUT</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!--Footer-->
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2025 TEJ CORPORATION.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="product-script.js"></script>
+<script>
+    function selectGameOptimization(type) {
+        const optimizations = {
+            'single': { name: 'Single Game Optimization', price: '$19.99' },
+            'multi': { name: 'Multi-Game Optimization', price: '$34.99' },
+            'premium': { name: 'Premium Game Optimization', price: '$49.99' }
+        };
+        
+        const selected = optimizations[type];
+        sessionStorage.setItem('selectedGameOptimization', JSON.stringify(selected));
+        window.location.href = 'index.html#contact';
+    }
+</script>
+</body>
+</html>
